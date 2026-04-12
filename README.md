@@ -13,7 +13,7 @@
    - `y`
    - `source`
 
-То есть итоговое API строго соответствует ограничению ТЗ: без использования изображений на inference. Требование задачи и состав сдачи описаны в ТЗ. fileciteturn0file0
+То есть итоговое API строго соответствует ограничению ТЗ: без использования изображений на inference.
 
 ## Почему выбран именно этот вариант
 
@@ -23,7 +23,7 @@
 - `med_bottom = 140.50`
 - `med_all = 134.42`
 
-Mixture-of-Experts в текущем виде прироста не дал и оказался хуже по `med_all`, особенно по `bottom`, поэтому в финальную версию не включён. Экспериментальный ноутбук с этим сравнением подтверждает, что `control_residual_mlp` обошёл `moe_k3`. fileciteturn0file1
+Mixture-of-Experts в текущем виде прироста не дал и оказался хуже по `med_all`, особенно по `bottom`, поэтому в финальную версию не включён.
 
 ## Ограничение постановки
 
@@ -43,10 +43,9 @@ Mixture-of-Experts в текущем виде прироста не дал и о
 .
 ├── README.md
 ├── requirements.txt
-├── .gitignore
-└── solution/
-    ├── train.py
-    └── predict.py
+├── train.py
+├── predict.py
+└── .gitignore
 ```
 
 После обучения создаётся папка `artifacts/`:
@@ -71,7 +70,7 @@ coord_data/
 └── val/
 ```
 
-Разбиение нужно строго соблюдать: обучение только на `train`, оценка только на `val`. Это прямо указано в ТЗ. fileciteturn0file0
+В ТЗ указано, строго соблюдать разбиение: обучение только на train, оценка только на val.
 
 ## Установка
 
@@ -86,7 +85,7 @@ pip install -r requirements.txt
 Пример запуска:
 
 ```bash
-python solution/train.py \
+python train.py \
   --data-root /path/to/coord_data \
   --artifacts-dir artifacts \
   --epochs 250 \
@@ -108,7 +107,7 @@ python solution/train.py \
 Пример использования:
 
 ```bash
-python solution/predict.py \
+python predict.py \
   --artifacts-dir artifacts \
   --x 1200 \
   --y 350 \
@@ -132,9 +131,3 @@ print(xp, yp)
 - `top = 128.72 px`
 - `bottom = 140.50 px`
 - `med_all = 134.42 px`
-
-## Что можно написать в описании репозитория GitHub
-
-Короткий вариант:
-
-`Coordinate mapping solution for top/bottom -> door2 using poly3 ridge baseline + residual MLP. Inference uses only x, y, source.`
