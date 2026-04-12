@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build / cache
+.pytest_cache/
+.mypy_cache/
+ruff_cache/
+
+# Artifacts
+artifacts/
+*.pt
+*.joblib
+*.csv
+*.json
