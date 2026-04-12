@@ -103,8 +103,12 @@ class CoordinatePredictor:
         self.baseline_top = joblib.load(self.artifacts_dir / "baseline_top_poly3_ridge.joblib")
         self.baseline_bottom = joblib.load(self.artifacts_dir / "baseline_bottom_poly3_ridge.joblib")
         self.feature_scaler = joblib.load(self.artifacts_dir / "feature_scaler.joblib")
-
-        ckpt = torch.load(self.artifacts_dir / "control_residual_mlp.pt", map_location=self.device)
+        
+        ckpt = torch.load(
+        self.artifacts_dir / "control_residual_mlp.pt",
+        map_location=self.device,
+        weights_only=True)
+        
         feature_dim = int(ckpt["feature_dim"])
 
         self.model = ControlResidualRegressor(in_dim=feature_dim).to(self.device)
