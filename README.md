@@ -41,10 +41,11 @@ Mixture-of-Experts в текущем виде прироста не дал и о
 ```text
 .
 ├── README.md
-├── requirements.txt
-├── train.py
-├── predict.py
-└── .gitignore
+├── .gitignore
+└── solution/
+    ├── train.py
+    ├── predict.py
+    └── requirements.txt
 ```
 
 После обучения создаётся папка `artifacts/`:
@@ -76,7 +77,7 @@ coord_data/
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r solution/requirements.txt
 ```
 
 ## Обучение
@@ -84,7 +85,7 @@ pip install -r requirements.txt
 Пример запуска:
 
 ```bash
-python train.py \
+python solution/train.py \
   --data-root /path/to/coord_data \
   --artifacts-dir artifacts \
   --epochs 250 \
@@ -106,7 +107,7 @@ python train.py \
 Пример использования:
 
 ```bash
-python predict.py \
+python solution/predict.py \
   --artifacts-dir artifacts \
   --x 1200 \
   --y 350 \
